@@ -2,13 +2,14 @@ body, .LineApp  {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #f1f1f1;
 }
 main{
     flex: 1 0 auto;
 }
 .clear {clear: both;}
 .page-header {
-    background-color: #F1F1F1;
+    background-color: #FFFFFF;
     margin-bottom: 30px;
 }
 .page-header .container {
@@ -20,6 +21,9 @@ main{
 .add-task .input-field input {
     padding-left: 0.75em;
 }
+.add-task h6 {
+    margin-top: 30px;
+}
 .card-panel.task {
     padding: 17px 20px;
 }
@@ -27,10 +31,11 @@ main{
     background-color: #26a69a;
     color: #fefefe;
 }
+.card-panel.task.preview i.material-icons,.card-panel.task.preview span {
+    cursor: default;
+}
 .card-panel.task.preview {
-    margin-top: 40px;
     box-shadow: none;
-    background-color: #f1f1f1;
 }
 
 .task-done-container h5 {

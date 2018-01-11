@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../LineApp.css';
 
-import Task from './Task';
-
-class TaskPreview extends Task {
+class TaskPreview extends Component {
     render() {
         return (
             <div className="card-panel task preview col s12">
