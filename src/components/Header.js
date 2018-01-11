@@ -6,7 +6,7 @@ class Header extends Component {
         return (
             <header className="page-header">
                 <div className="container">
-                    <h1 className="center-align">Welcome to LineApp</h1>
+                    <h1 className="center-align">Welcome to <strong>LineApp</strong></h1>
                     <h5 className="center-align">Add your tasks and todos to get organized.</h5>
                 </div>
             </header>

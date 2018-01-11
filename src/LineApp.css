@@ -6,6 +6,7 @@ body, .LineApp  {
 main{
     flex: 1 0 auto;
 }
+.clear {clear: both;}
 .page-header {
     background-color: #F1F1F1;
     margin-bottom: 30px;
@@ -18,4 +19,23 @@ main{
 }
 .add-task .input-field input {
     padding-left: 0.75em;
+}
+.card-panel.task {
+    padding: 17px 20px;
+}
+.card-panel.task.done {
+    background-color: #26a69a;
+    color: #fefefe;
+}
+.card-panel.task.preview {
+    margin-top: 40px;
+    box-shadow: none;
+    background-color: #f1f1f1;
+}
+
+.task-done-container h5 {
+    margin-top: 30px;
+}
+.act-btn {
+    cursor: pointer;
 }

@@ -4,7 +4,6 @@ import '../LineApp.css';
 class Footer extends Component {
   render() {
     return (
-
         <footer className="page-footer transparent">
             <div className="footer-copyright teal darken-2">
                 <div className="container">
@@ -13,7 +12,6 @@ class Footer extends Component {
                 </div>
             </div>
         </footer>
-
     );
   }
 }
