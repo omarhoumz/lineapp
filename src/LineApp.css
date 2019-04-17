@@ -1,46 +1,54 @@
-body, .LineApp  {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: #f1f1f1;
+body,
+.LineApp {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f1f1f1;
 }
-main{
-    flex: 1 0 auto;
+main {
+  flex: 1 0 auto;
 }
-.clear {clear: both;}
+.clear {
+  clear: both;
+}
 .page-header {
-    background-color: #FFFFFF;
-    margin-bottom: 30px;
+  background-color: #ffffff;
+  margin-bottom: 30px;
 }
 .page-header .container {
-    padding: 30px 0 60px;
+  padding: 30px 0 60px;
 }
 .add-task .input-field {
-    padding-left: 0;
+  padding-left: 0;
 }
 .add-task .input-field input {
-    padding-left: 0.75em;
+  padding-left: 0.75em;
 }
 .add-task h6 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .card-panel.task {
-    padding: 17px 20px;
+  padding: 17px 20px;
 }
 .card-panel.task.done {
-    background-color: #26a69a;
-    color: #fefefe;
+  background-color: #26a69a;
+  color: #fefefe;
 }
-.card-panel.task.preview i.material-icons,.card-panel.task.preview span {
-    cursor: default;
+.card-panel.task.preview i.material-icons,
+.card-panel.task.preview span {
+  cursor: default;
 }
 .card-panel.task.preview {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .task-done-container h5 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .act-btn {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+footer p {
+  margin: 0;
 }
