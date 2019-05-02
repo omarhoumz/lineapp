@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3b4b11e0-17e8-46d3-b32e-73735034525a/deploy-status)](https://app.netlify.com/sites/lineapp/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
