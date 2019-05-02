@@ -24,7 +24,7 @@ class Main extends Component {
 
     this.state = {
       task: '',
-      allTasks: allTasksFromCookies,
+      allTasks: allTasksFromCookies || [],
     }
   }
 
@@ -50,7 +50,7 @@ class Main extends Component {
   }
 
   handleAddTask(taskName) {
-    if (taskName !== '') {
+    if (taskName) {
       const task = {
         key: new Date(),
         name: taskName,
