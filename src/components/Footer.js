@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import "../LineApp.css";
+import React, { Component } from 'react'
+import '../LineApp.css'
 
 class Footer extends Component {
   render() {
     return (
       <footer className="page-footer transparent">
-        <div className="footer-copyright teal darken-2">
+        <div className="footer-copyright teal">
           <div className="container">
             <p>
-              © 2019 By{" "}
+              © 2019 By{' '}
               <a
                 className="grey-text text-lighten-4"
                 target="_blank"
@@ -27,8 +27,8 @@ class Footer extends Component {
           </div>
         </div>
       </footer>
-    );
+    )
   }
 }
 
-export default Footer;
+export default Footer
