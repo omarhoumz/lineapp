@@ -1,8 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import LineApp from './components/LineApp';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(<LineApp />, document.getElementById('root'));
-registerServiceWorker();
+import registerServiceWorker from './registerServiceWorker'
+
+import LineApp from './LineApp'
+import './index.css'
+
+ReactDOM.render(<LineApp />, document.getElementById('root'))
+registerServiceWorker()
