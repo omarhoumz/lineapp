@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "appendjson": "^0.1.2",
+    "firebase": "^5.11.1",
+    "firebaseui": "^3.6.0",
     "materialize-css": "^1.0.0",
     "react": "^16.2.0",
     "react-cookie": "^3.1.2",
