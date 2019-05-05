@@ -1,12 +1,7 @@
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
 import * as firebase from 'firebase/app'
-import * as firebaseui from 'firebaseui'
 
-// Add the Firebase services that you want to use
 import 'firebase/auth'
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCpzG1TmwKDmKlBVp-GEU72kxVr2HFBJww',
   authDomain: 'fir-auth-lineapp.firebaseapp.com',
@@ -16,7 +11,7 @@ const firebaseConfig = {
   messagingSenderId: '748868350055',
   appId: '1:748868350055:web:3d8537e0cd0cfee7',
 }
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig)
 
 const signInSuccessUrl =
@@ -26,8 +21,8 @@ const signInSuccessUrl =
 
 const uiConfig = {
   signInSuccessUrl,
+  signInFlow: 'popup',
   signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
@@ -37,11 +32,10 @@ const uiConfig = {
   tosUrl: signInSuccessUrl,
   // Privacy policy url/callback.
   privacyPolicyUrl: signInSuccessUrl,
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false,
+  },
 }
 
-// Initialize the FirebaseUI Widget using Firebase.
-const ui = new firebaseui.auth.AuthUI(firebase.auth())
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig)
-
-export { firebase }
+export { firebase, uiConfig }

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { firebase } from './apis/firebase'
 
+import Login from './components/login/login'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Main from './components/Main'
@@ -15,10 +16,15 @@ class LineApp extends React.Component {
       isUserLoggedIn: false,
     }
   }
+
   componentDidMount() {
-    if (firebase) {
-      firebase.auth().onAuthStateChanged(this.onAuthStateChanged)
-    }
+    this.unregisterAuthObserver = firebase
+      .auth()
+      .onAuthStateChanged(user => this.setState({ isUserLoggedIn: !!user }))
+  }
+
+  componentWillUnmount() {
+    this.unregisterAuthObserver()
   }
 
   setUserLogginStatus = status => {
@@ -27,20 +33,27 @@ class LineApp extends React.Component {
     })
   }
 
-  onAuthStateChanged = user => {
-    if (user) {
-      this.setUserLogginStatus(true)
-      console.log('User is signed in.', user)
-    } else {
-      this.setUserLogginStatus(false)
-      console.log('No user is signed in.')
-    }
+  renderLoginWidget = () => {
+    return <Login />
   }
 
   render() {
+    const { isUserLoggedIn } = this.state
+    const firebaseAuth = firebase.auth()
+    const currentUser = firebaseAuth.currentUser
+
+    console.log(firebaseAuth.currentUser && firebaseAuth.currentUser)
+
+    if (!isUserLoggedIn) {
+      return this.renderLoginWidget()
+    }
     return (
       <div className="LineApp">
-        <Header />
+        <Header
+          displayName={currentUser.displayName}
+          imageUrl={currentUser.photoURL}
+          onClickSignOut={() => firebaseAuth.signOut()}
+        />
         <Main />
         <Footer />
       </div>
