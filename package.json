@@ -10,6 +10,7 @@
     "react": "^16.2.0",
     "react-cookie": "^3.1.2",
     "react-dom": "^16.2.0",
+    "react-firebaseui": "^3.1.2",
     "react-scripts": "3.0.0"
   },
   "scripts": {
