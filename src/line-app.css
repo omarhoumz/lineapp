@@ -37,3 +37,6 @@ footer p {
   border-color: var(--cyan);
   box-shadow: 0 0 0 0.2rem rgba(22, 162, 183, 0.2);
 }
+.modal-content {
+  border-radius: 0.2rem;
+}

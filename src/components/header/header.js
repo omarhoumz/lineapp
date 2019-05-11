@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { About } from '../about/about'
 import './header.css'
 
 export default class Header extends Component {
@@ -10,7 +11,18 @@ export default class Header extends Component {
       <header className="page-header border-bottom border-light">
         <div className="container d-flex flex-sm-row align-items-md-center flex-column justify-content-between py-5">
           <div className="header-brand">
-            <h1>LineApp</h1>
+            <h1>
+              LineApp
+              <button
+                type="button"
+                class="btn btn-link about-link"
+                data-toggle="modal"
+                data-target="#aboutLineApp"
+              >
+                About
+              </button>
+            </h1>
+
             <h2 className="h4">
               {displayName ? `${displayName}, ` : ''}Welcome
             </h2>
@@ -36,6 +48,8 @@ export default class Header extends Component {
             </button>
           </div>
         </div>
+        {/* About modal */}
+        <About />
       </header>
     )
   }
