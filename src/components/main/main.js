@@ -159,7 +159,7 @@ class Main extends Component {
       <main className="main-content">
         <div className="container">
           <div className="row">
-            <div className="col s11 m6 l5 add-task">
+            <div className="col-md add-task">
               <h4>Add a task</h4>
               <h5 class="lead">Add your tasks and todos to get organized.</h5>
               <br />
@@ -184,7 +184,7 @@ class Main extends Component {
                 </button>
               </div>
             </div>
-            <div className="col s11 m6 offset-l1 l6 all-tasks">
+            <div className="col-md all-tasks">
               <h4>
                 My tasks
                 <i

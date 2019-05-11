@@ -19,10 +19,7 @@ class Footer extends Component {
             </a>
           </p>
           <p>
-            <a
-              className="grey-text text-lighten-4 right"
-              href="mailto://omarhoumz@gmail.com"
-            >
+            <a className="grey-text" href="mailto://omarhoumz@gmail.com">
               omarhoumz@gmail.com
             </a>
           </p>
