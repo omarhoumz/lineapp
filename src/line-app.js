@@ -6,6 +6,7 @@ import Login from './components/login/login'
 import Footer from './components/footer/footer'
 import Header from './components/header/header'
 import Main from './components/main/main'
+import { Loading } from './components/loading/loading'
 import './line-app.css'
 
 class LineApp extends React.Component {
@@ -14,13 +15,16 @@ class LineApp extends React.Component {
 
     this.state = {
       isUserLoggedIn: false,
+      isLoading: true,
     }
   }
 
   componentDidMount() {
     this.unregisterAuthObserver = firebase
       .auth()
-      .onAuthStateChanged(user => this.setState({ isUserLoggedIn: !!user }))
+      .onAuthStateChanged(user =>
+        this.setState({ isUserLoggedIn: !!user, isLoading: false })
+      )
   }
 
   componentWillUnmount() {
@@ -37,13 +41,20 @@ class LineApp extends React.Component {
     return <Login />
   }
 
+  renderLoding = () => {
+    return <Loading />
+  }
+
   render() {
-    const { isUserLoggedIn } = this.state
+    const { isUserLoggedIn, isLoading } = this.state
     const firebaseAuth = firebase.auth()
     const currentUser = firebaseAuth.currentUser
 
     console.log(firebaseAuth.currentUser && firebaseAuth.currentUser)
 
+    if (isLoading) {
+      return this.renderLoding()
+    }
     if (!isUserLoggedIn) {
       return this.renderLoginWidget()
     }
