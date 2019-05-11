@@ -31,12 +31,6 @@ class LineApp extends React.Component {
     this.unregisterAuthObserver()
   }
 
-  setUserLogginStatus = status => {
-    this.setState({
-      isUserLoggedIn: status,
-    })
-  }
-
   renderLoginWidget = () => {
     return <Login />
   }
