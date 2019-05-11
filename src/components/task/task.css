@@ -1,0 +1,14 @@
+.card-panel.task {
+  padding: 17px 20px;
+}
+.card-panel.task.done {
+  background-color: #26a69a;
+  color: #fefefe;
+}
+.card-panel.task.preview i.material-icons,
+.card-panel.task.preview span {
+  cursor: default;
+}
+.card-panel.task.preview {
+  box-shadow: none;
+}

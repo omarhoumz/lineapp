@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../LineApp.css'
 
 class Footer extends Component {
   render() {

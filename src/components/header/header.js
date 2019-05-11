@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import '../LineApp.css'
-
 export default class Header extends Component {
   render() {
     const { displayName, onClickSignOut, imageUrl } = this.props

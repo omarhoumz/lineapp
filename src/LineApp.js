@@ -3,9 +3,9 @@ import React from 'react'
 import { firebase } from './apis/firebase'
 
 import Login from './components/login/login'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import Main from './components/Main'
+import Footer from './components/footer/footer'
+import Header from './components/header/header'
+import Main from './components/main/main'
 import './LineApp.css'
 
 class LineApp extends React.Component {

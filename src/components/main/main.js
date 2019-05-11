@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import '../LineApp.css'
 // import { uniqueId } from 'lodash';
 import Cookies from 'universal-cookie'
 
-import Task from './Task'
-import TaskDone from './TaskDone'
-import TaskPreview from './TaskPreview'
+import { Task } from '../task/task'
+import { TaskDone } from '../task-done/task-done'
+import { TaskPreview } from '../task-preview/task-preview'
 
 const tasksCookie = new Cookies()
 const cookieKey = 'allTasks'
