@@ -26,7 +26,6 @@ export class TaskDone extends Task {
             undo
           </i>
         </div>
-        <div className="clear" />
       </div>
     )
   }

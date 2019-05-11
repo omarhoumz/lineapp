@@ -1,0 +1,8 @@
+.all-tasks h4 .material-icons:not(:first-child) {
+  margin-right: 0.8rem;
+}
+
+.task-done-container h5 {
+  margin-top: 2rem;
+  margin-right: 0;
+}

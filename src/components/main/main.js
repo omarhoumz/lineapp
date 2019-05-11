@@ -4,7 +4,8 @@ import Cookies from 'universal-cookie'
 
 import { Task } from '../task/task'
 import { TaskDone } from '../task-done/task-done'
-import { TaskPreview } from '../task-preview/task-preview'
+
+import './main.css'
 
 const tasksCookie = new Cookies()
 const cookieKey = 'allTasks'
@@ -13,17 +14,11 @@ class Main extends Component {
   constructor(props) {
     super(props)
 
-    let allTasksFromCookies = []
-
-    if (tasksCookie.get('allTasks') === '') {
-      tasksCookie.set(cookieKey, [], { path: '/' })
-    } else {
-      allTasksFromCookies = tasksCookie.get('allTasks')
-    }
+    const allTasksCookie = tasksCookie.get(cookieKey)
 
     this.state = {
       task: '',
-      allTasks: allTasksFromCookies || [],
+      allTasks: allTasksCookie || [],
     }
   }
 
@@ -68,6 +63,7 @@ class Main extends Component {
       this.setState({ task: '' })
     }
   }
+
   handleEnter(e) {
     if (e.key === 'Enter') {
       this.handleAddTask(e.target.value)
@@ -157,44 +153,40 @@ class Main extends Component {
   }
 
   render() {
+    const { task, allTasks } = this.state
+
     return (
       <main className="main-content">
         <div className="container">
           <div className="row">
             <div className="col s11 m6 l5 add-task">
               <h4>Add a task</h4>
-              <div className="input-field col s12">
+              <h5 class="lead">Add your tasks and todos to get organized.</h5>
+              <br />
+              <div className="form-group">
                 <label htmlFor="task">My Task</label>
                 <input
                   type="text"
                   id="task"
                   title="task"
-                  value={this.state.task}
+                  value={task}
                   onChange={this.handlePrev.bind(this)}
                   onKeyPress={this.handleEnter.bind(this)}
+                  className="form-control"
                 />
               </div>
-              <div className="col s12">
+              <div className="form-group">
                 <button
-                  className="btn waves-effect waves-dark teal lighten-2"
-                  onClick={this.handleAddTask.bind(this, this.state.task)}
+                  className="btn btn-info d-inline-flex"
+                  onClick={this.handleAddTask.bind(this, task)}
                 >
-                  Add Task<i className="material-icons right">add</i>
+                  <i className="material-icons mr-2">add</i> Add Task
                 </button>
               </div>
-              {this.state.task && (
-                <>
-                  <h6 className="col s12">Task Preview</h6>
-                  <TaskPreview
-                    prevTask={this.prevTask.bind(this)}
-                    task={this.state.task}
-                  />
-                </>
-              )}
             </div>
             <div className="col s11 m6 offset-l1 l6 all-tasks">
               <h4>
-                All tasks
+                My tasks
                 <i
                   className="material-icons right small act-btn tooltipped"
                   data-position="top"
@@ -214,9 +206,10 @@ class Main extends Component {
                   done_all
                 </i>
               </h4>
+              <hr />
               <div className="task-container">
-                {this.state.allTasks &&
-                  this.state.allTasks.map(
+                {allTasks &&
+                  allTasks.map(
                     task =>
                       !task.done && (
                         <Task
@@ -229,8 +222,9 @@ class Main extends Component {
               </div>
               <div className="task-done-container">
                 <h5>Done tasks</h5>
-                {this.state.allTasks &&
-                  this.state.allTasks.map(
+                <hr />
+                {allTasks &&
+                  allTasks.map(
                     task =>
                       task.done && (
                         <TaskDone

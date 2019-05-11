@@ -39,7 +39,6 @@ export class Task extends Component {
             edit
           </i>
         </div>
-        <div className="clear" />
       </div>
     )
   }

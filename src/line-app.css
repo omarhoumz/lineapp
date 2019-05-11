@@ -3,7 +3,6 @@ body,
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #f1f1f1;
 }
 main {
   flex: 1 0 auto;
@@ -11,17 +10,6 @@ main {
 }
 .clear {
   clear: both;
-}
-.page-header {
-  background-color: #ffffff;
-}
-.page-header .container {
-  padding: 40px 0;
-}
-.page-header h1 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  opacity: 0.8;
 }
 .add-task .input-field {
   padding-left: 0;
@@ -32,14 +20,20 @@ main {
 .add-task h6 {
   margin-top: 30px;
 }
-
-.task-done-container h5 {
-  margin-top: 30px;
-}
 .act-btn {
   cursor: pointer;
 }
 
 footer p {
   margin: 0;
+}
+
+/* bootstrap overrides */
+.form-control,
+.btn {
+  border-radius: 0.1rem;
+}
+.form-control:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 0.2rem rgba(22, 162, 183, 0.2);
 }

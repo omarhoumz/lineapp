@@ -1,14 +1,21 @@
-.card-panel.task {
-  padding: 17px 20px;
+.task {
+  padding: 0.8rem;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  border-radius: 0.2rem;
 }
-.card-panel.task.done {
-  background-color: #26a69a;
-  color: #fefefe;
+.task i.material-icons:not(:first-child) {
+  margin-right: 0.2rem;
 }
-.card-panel.task.preview i.material-icons,
-.card-panel.task.preview span {
+.task.done {
+  background-color: var(--light);
+  color: var(--gray);
+}
+.task.preview i.material-icons,
+.task.preview span {
   cursor: default;
 }
-.card-panel.task.preview {
-  box-shadow: none;
+
+.right {
+  float: right;
 }
