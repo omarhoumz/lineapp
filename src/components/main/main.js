@@ -53,7 +53,7 @@ class Main extends Component {
       let allTasks = this.state.allTasks
       allTasks.push(task)
 
-      let data = JSON.stringify(allTasks)
+      const data = JSON.stringify(allTasks)
       this.updateCookie(tasksCookie, cookieKey, data)
 
       allTasks = tasksCookie.get('allTasks')
@@ -73,20 +73,18 @@ class Main extends Component {
   updateTask(key, action) {
     switch (action) {
       case 'DELETE':
-        if (this.state.allTasks.filter(task => task.key === key).length > 0) {
-          let allTasks = this.state.allTasks
-          allTasks.splice(key, 1)
-          this.setState({ allTasks })
-
-          let data = JSON.stringify(this.state.allTasks)
-          this.updateCookie(tasksCookie, cookieKey, data)
-
-          // console.log(tasksCookie.get('allTasks'));
-        } else {
-          console.log('Item not found')
-        }
+        this.setState(
+          prevState => ({
+            allTasks: prevState.allTasks.filter(task => task.key !== key),
+          }),
+          () => {
+            const data = JSON.stringify(this.state.allTasks)
+            this.updateCookie(tasksCookie, cookieKey, data)
+          }
+        )
 
         break
+
       case 'DONE':
         if (this.state.allTasks.filter(task => task.key === key).length > 0) {
           let allTasks = this.state.allTasks
@@ -97,7 +95,7 @@ class Main extends Component {
             return ''
           })
 
-          let data = JSON.stringify(allTasks)
+          const data = JSON.stringify(allTasks)
           this.updateCookie(tasksCookie, cookieKey, data)
 
           allTasks = tasksCookie.get('allTasks')
@@ -106,8 +104,8 @@ class Main extends Component {
         } else {
           console.log('Item not found')
         }
-
         break
+
       case 'UNDO':
         if (this.state.allTasks.filter(task => task.key === key).length > 0) {
           let allTasks = this.state.allTasks
@@ -118,7 +116,7 @@ class Main extends Component {
             return ''
           })
 
-          let data = JSON.stringify(allTasks)
+          const data = JSON.stringify(allTasks)
           this.updateCookie(tasksCookie, cookieKey, data)
 
           allTasks = tasksCookie.get('allTasks')
@@ -127,20 +125,22 @@ class Main extends Component {
         } else {
           console.log('Item not found')
         }
+        break
 
-        break
       case 'EDIT':
-        console.log(action, key)
+        console.log(`${action} action not yet supported`)
         break
+
       case 'DELETE_ALL':
         tasksCookie.set(cookieKey, [], { path: '/' })
         this.setState({ allTasks: [] })
         break
+
       case 'DONE_ALL':
         let allTasks = this.state.allTasks
         allTasks.map(task => (task.done = true))
 
-        let data = JSON.stringify(allTasks)
+        const data = JSON.stringify(allTasks)
         this.updateCookie(tasksCookie, cookieKey, data)
 
         allTasks = tasksCookie.get('allTasks')
@@ -148,6 +148,7 @@ class Main extends Component {
         this.setState({ allTasks })
 
         break
+
       default:
     }
   }

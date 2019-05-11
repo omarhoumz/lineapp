@@ -4,7 +4,7 @@ import { Task } from '../task/task'
 import './task-done.css'
 
 export class TaskDone extends Task {
-  undo() {
+  undo = () => {
     this.props.updateTask(this.props.task.key, 'UNDO')
   }
 
@@ -13,16 +13,10 @@ export class TaskDone extends Task {
       <div className="task done">
         <span>{this.props.task.name}</span>
         <div className="right">
-          <i
-            className="material-icons right act-btn"
-            onClick={this.delete.bind(this)}
-          >
+          <i className="material-icons right act-btn" onClick={this.delete}>
             delete
           </i>
-          <i
-            className="material-icons right act-btn"
-            onClick={this.undo.bind(this)}
-          >
+          <i className="material-icons right act-btn" onClick={this.undo}>
             undo
           </i>
         </div>

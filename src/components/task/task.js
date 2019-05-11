@@ -3,15 +3,15 @@ import React, { Component } from 'react'
 import './task.css'
 
 export class Task extends Component {
-  delete() {
+  delete = () => {
     this.props.updateTask(this.props.task.key, 'DELETE')
   }
 
-  done() {
+  done = () => {
     this.props.updateTask(this.props.task.key, 'DONE')
   }
 
-  edit() {
+  edit = () => {
     this.props.updateTask(this.props.task.key, 'EDIT')
   }
 
@@ -20,22 +20,13 @@ export class Task extends Component {
       <div className="task">
         <span>{this.props.task.name}</span>
         <div className="right">
-          <i
-            className="material-icons right act-btn"
-            onClick={this.delete.bind(this)}
-          >
+          <i className="material-icons right act-btn" onClick={this.delete}>
             delete
           </i>
-          <i
-            className="material-icons right act-btn"
-            onClick={this.done.bind(this)}
-          >
+          <i className="material-icons right act-btn" onClick={this.done}>
             done
           </i>
-          <i
-            className="material-icons right act-btn"
-            onClick={this.edit.bind(this)}
-          >
+          <i className="material-icons right act-btn" onClick={this.edit}>
             edit
           </i>
         </div>
