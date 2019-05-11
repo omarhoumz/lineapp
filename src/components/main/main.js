@@ -161,7 +161,9 @@ class Main extends Component {
           <div className="row">
             <div className="col-md add-task">
               <h4>Add a task</h4>
-              <h5 class="lead">Add your tasks and todos to get organized.</h5>
+              <h5 className="lead">
+                Add your tasks and todos to get organized.
+              </h5>
               <br />
               <div className="form-group">
                 <label htmlFor="task">My Task</label>

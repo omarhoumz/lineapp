@@ -15,7 +15,7 @@ export default class Header extends Component {
               LineApp
               <button
                 type="button"
-                class="btn btn-link about-link"
+                className="btn btn-link about-link"
                 data-toggle="modal"
                 data-target="#aboutLineApp"
               >
