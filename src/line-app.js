@@ -6,7 +6,7 @@ import Login from './components/login/login'
 import Footer from './components/footer/footer'
 import Header from './components/header/header'
 import Main from './components/main/main'
-import './LineApp.css'
+import './line-app.css'
 
 class LineApp extends React.Component {
   constructor() {
