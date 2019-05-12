@@ -54,16 +54,16 @@ class Main extends Component {
         name: taskName,
         done: false,
       }
-      let allTasks = this.state.allTasks
-      allTasks.push(task)
 
-      this.updateTasks(allTasks)
-
-      allTasks = tasksCookie.get('allTasks')
-
-      this.setState({ allTasks })
-
-      this.setState({ task: '' })
+      this.setState(
+        prevState => ({
+          allTasks: [...prevState.allTasks, task],
+          task: '',
+        }),
+        () => {
+          this.updateTasks(this.state.allTasks)
+        }
+      )
     }
   }
 
@@ -87,43 +87,35 @@ class Main extends Component {
         break
 
       case 'DONE':
-        if (this.state.allTasks.filter(task => task.key === key).length > 0) {
-          let allTasks = this.state.allTasks
-          allTasks.filter(function(task) {
-            if (task.key === key) {
-              return (task.done = true)
-            }
-            return ''
-          })
-
-          this.updateTasks(allTasks)
-
-          allTasks = tasksCookie.get('allTasks')
-
-          this.setState({ allTasks })
-        } else {
-          console.log('Item not found')
-        }
+        this.setState(
+          prevState => ({
+            allTasks: prevState.allTasks.map(task => {
+              if (task.key === key) {
+                return { ...task, done: true }
+              }
+              return { ...task }
+            }),
+          }),
+          () => {
+            this.updateTasks(this.state.allTasks)
+          }
+        )
         break
 
       case 'UNDO':
-        if (this.state.allTasks.filter(task => task.key === key).length > 0) {
-          let allTasks = this.state.allTasks
-          allTasks.filter(function(task) {
-            if (task.key === key) {
-              return (task.done = false)
-            }
-            return ''
-          })
-
-          this.updateTasks(allTasks)
-
-          allTasks = tasksCookie.get('allTasks')
-
-          this.setState({ allTasks })
-        } else {
-          console.log('Item not found')
-        }
+        this.setState(
+          prevState => ({
+            allTasks: prevState.allTasks.map(task => {
+              if (task.key === key) {
+                return { ...task, done: false }
+              }
+              return { ...task }
+            }),
+          }),
+          () => {
+            this.updateTasks(this.state.allTasks)
+          }
+        )
         break
 
       case 'EDIT':
@@ -131,23 +123,25 @@ class Main extends Component {
         break
 
       case 'DELETE_ALL':
-        tasksCookie.set(cookieKey, [], { path: '/' })
-        this.setState({ allTasks: [] })
+        this.setState({ allTasks: [] }, () => {
+          this.updateTasks([])
+        })
         break
 
       case 'DONE_ALL':
-        let allTasks = this.state.allTasks
-        allTasks.map(task => (task.done = true))
-
-        this.updateTasks(allTasks)
-
-        allTasks = tasksCookie.get('allTasks')
-
-        this.setState({ allTasks })
+        this.setState(
+          prevState => ({
+            allTasks: prevState.allTasks.map(task => ({ ...task, done: true })),
+          }),
+          () => {
+            this.updateTasks(this.state.allTasks)
+          }
+        )
 
         break
 
       default:
+        break
     }
   }
 
