@@ -1,19 +1,30 @@
-.task {
-  padding: 0.8rem;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  margin-bottom: 1rem;
+.inner-task {
+  border: 1px solid #d8dadc;
   border-radius: 0.2rem;
+  margin: 0.8rem 0;
+  padding: 0.8rem;
+  transition: box-shadow 0.2s;
 }
-.task i.material-icons:not(:first-child) {
+.inner-task:hover {
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.task .task-title {
+  margin-left: 2px;
+}
+.task .actions {
+  display: flex;
+  margin-top: 0.8rem;
+}
+.task .actions .material-icons {
+  color: #6b7273;
+  font-size: 1.3rem;
+}
+.task i.material-icons:not(:last-child) {
   margin-right: 0.2rem;
 }
-.task.done {
+.task.done > .inner-task {
   background-color: var(--light);
   color: var(--gray);
-}
-.task.preview i.material-icons,
-.task.preview span {
-  cursor: default;
 }
 
 .right {

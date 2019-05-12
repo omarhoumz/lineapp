@@ -4,21 +4,9 @@ body,
   min-height: 100vh;
   flex-direction: column;
 }
-main {
-  flex: 1 0 auto;
-  padding-top: 30px;
-}
+
 .clear {
   clear: both;
-}
-.add-task .input-field {
-  padding-left: 0;
-}
-.add-task .input-field input {
-  padding-left: 0.75em;
-}
-.add-task h6 {
-  margin-top: 30px;
 }
 .act-btn {
   cursor: pointer;
@@ -31,7 +19,7 @@ footer p {
 /* bootstrap overrides */
 .form-control,
 .btn {
-  border-radius: 0.1rem;
+  border-radius: 0.2rem;
 }
 .form-control:focus {
   border-color: var(--cyan);

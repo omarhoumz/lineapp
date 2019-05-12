@@ -22,28 +22,32 @@ class Main extends Component {
     }
   }
 
-  updateCookie(cookieName, cookieKey, cookieValue) {
+  updateCookie = (cookieName, cookieKey, cookieValue) => {
     cookieName.set(cookieKey, cookieValue, { path: '/' })
   }
 
-  delete_all() {
+  updateTasks = cookieValue => {
+    this.updateCookie(tasksCookie, cookieKey, JSON.stringify(cookieValue))
+  }
+
+  delete_all = () => {
     this.updateTask(null, 'DELETE_ALL')
   }
 
-  done_all() {
+  done_all = () => {
     this.updateTask(null, 'DONE_ALL')
   }
 
-  prevTask(task) {
+  prevTask = task => {
     this.setState({ task })
   }
 
-  handlePrev(e) {
+  handlePrev = e => {
     const task = e.target.value
     this.prevTask(task)
   }
 
-  handleAddTask(taskName) {
+  handleAddTask = taskName => {
     if (taskName) {
       const task = {
         key: new Date(),
@@ -53,8 +57,7 @@ class Main extends Component {
       let allTasks = this.state.allTasks
       allTasks.push(task)
 
-      const data = JSON.stringify(allTasks)
-      this.updateCookie(tasksCookie, cookieKey, data)
+      this.updateTasks(allTasks)
 
       allTasks = tasksCookie.get('allTasks')
 
@@ -64,13 +67,13 @@ class Main extends Component {
     }
   }
 
-  handleEnter(e) {
+  handleEnter = e => {
     if (e.key === 'Enter') {
       this.handleAddTask(e.target.value)
     }
   }
 
-  updateTask(key, action) {
+  updateTask = (key, action) => {
     switch (action) {
       case 'DELETE':
         this.setState(
@@ -78,11 +81,9 @@ class Main extends Component {
             allTasks: prevState.allTasks.filter(task => task.key !== key),
           }),
           () => {
-            const data = JSON.stringify(this.state.allTasks)
-            this.updateCookie(tasksCookie, cookieKey, data)
+            this.updateTasks(this.state.allTasks)
           }
         )
-
         break
 
       case 'DONE':
@@ -95,8 +96,7 @@ class Main extends Component {
             return ''
           })
 
-          const data = JSON.stringify(allTasks)
-          this.updateCookie(tasksCookie, cookieKey, data)
+          this.updateTasks(allTasks)
 
           allTasks = tasksCookie.get('allTasks')
 
@@ -116,8 +116,7 @@ class Main extends Component {
             return ''
           })
 
-          const data = JSON.stringify(allTasks)
-          this.updateCookie(tasksCookie, cookieKey, data)
+          this.updateTasks(allTasks)
 
           allTasks = tasksCookie.get('allTasks')
 
@@ -140,8 +139,7 @@ class Main extends Component {
         let allTasks = this.state.allTasks
         allTasks.map(task => (task.done = true))
 
-        const data = JSON.stringify(allTasks)
-        this.updateCookie(tasksCookie, cookieKey, data)
+        this.updateTasks(allTasks)
 
         allTasks = tasksCookie.get('allTasks')
 
@@ -160,34 +158,40 @@ class Main extends Component {
       <main className="main-content">
         <div className="container">
           <div className="row">
-            <div className="col-md add-task">
+            <div className="col-sm add-task">
               <h4>Add a task</h4>
-              <h5 className="lead">
-                Add your tasks and todos to get organized.
-              </h5>
-              <br />
+              <p>
+                <small className="lead">
+                  Add your tasks and todos to get organized.
+                </small>
+              </p>
               <div className="form-group">
-                <label htmlFor="task">My Task</label>
+                <label htmlFor="task" className="sr-only">
+                  Add a new Task
+                </label>
                 <input
                   type="text"
                   id="task"
                   title="task"
+                  placeholder="Add a new Task"
                   value={task}
-                  onChange={this.handlePrev.bind(this)}
-                  onKeyPress={this.handleEnter.bind(this)}
+                  onChange={this.handlePrev}
+                  onKeyPress={this.handleEnter}
                   className="form-control"
                 />
               </div>
               <div className="form-group">
                 <button
                   className="btn btn-info d-inline-flex"
-                  onClick={this.handleAddTask.bind(this, task)}
+                  onClick={this.handleAddTask}
                 >
                   <i className="material-icons mr-2">add</i> Add Task
                 </button>
               </div>
+              <br />
+              <br />
             </div>
-            <div className="col-md all-tasks">
+            <div className="col-sm all-tasks">
               <h4>
                 My tasks
                 <i
@@ -195,7 +199,7 @@ class Main extends Component {
                   data-position="top"
                   data-delay="20"
                   data-tooltip="Delete All Tasks"
-                  onClick={this.delete_all.bind(this)}
+                  onClick={this.delete_all}
                 >
                   delete_sweep
                 </i>
@@ -204,13 +208,13 @@ class Main extends Component {
                   data-position="top"
                   data-delay="20"
                   data-tooltip="All Tasks Done"
-                  onClick={this.done_all.bind(this)}
+                  onClick={this.done_all}
                 >
                   done_all
                 </i>
               </h4>
               <hr />
-              <div className="task-container">
+              <div className="task-container my-tasks-container">
                 {allTasks &&
                   allTasks.map(
                     task =>
@@ -218,14 +222,14 @@ class Main extends Component {
                         <Task
                           task={task}
                           key={task.key}
-                          updateTask={this.updateTask.bind(this)}
+                          updateTask={this.updateTask}
                         />
                       )
                   )}
               </div>
-              <div className="task-done-container">
-                <h5>Done tasks</h5>
-                <hr />
+              <h5>Done tasks</h5>
+              <hr />
+              <div className="task-container tasks-done-container">
                 {allTasks &&
                   allTasks.map(
                     task =>
@@ -233,7 +237,7 @@ class Main extends Component {
                         <TaskDone
                           task={task}
                           key={task.key}
-                          updateTask={this.updateTask.bind(this)}
+                          updateTask={this.updateTask}
                         />
                       )
                   )}

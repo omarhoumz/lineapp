@@ -11,14 +11,16 @@ export class TaskDone extends Task {
   render() {
     return (
       <div className="task done">
-        <span>{this.props.task.name}</span>
-        <div className="right">
-          <i className="material-icons right act-btn" onClick={this.delete}>
-            delete
-          </i>
-          <i className="material-icons right act-btn" onClick={this.undo}>
-            undo
-          </i>
+        <div className="inner-task">
+          <span className="task-title">{this.props.task.name}</span>
+          <div className="actions">
+            <i className="material-icons act-btn" onClick={this.undo}>
+              undo
+            </i>
+            <i className="material-icons act-btn" onClick={this.delete}>
+              delete
+            </i>
+          </div>
         </div>
       </div>
     )
