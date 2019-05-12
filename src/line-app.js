@@ -44,8 +44,6 @@ class LineApp extends React.Component {
     const firebaseAuth = firebase.auth()
     const currentUser = firebaseAuth.currentUser
 
-    console.log(firebaseAuth.currentUser && firebaseAuth.currentUser)
-
     if (isLoading) {
       return this.renderLoding()
     }
