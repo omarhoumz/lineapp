@@ -3,13 +3,13 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCpzG1TmwKDmKlBVp-GEU72kxVr2HFBJww',
-  authDomain: 'fir-auth-lineapp.firebaseapp.com',
-  databaseURL: 'https://fir-auth-lineapp.firebaseio.com',
-  projectId: 'fir-auth-lineapp',
-  storageBucket: 'fir-auth-lineapp.appspot.com',
-  messagingSenderId: '748868350055',
-  appId: '1:748868350055:web:3d8537e0cd0cfee7',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERS_ID,
+  appId: process.env.REACT_APP_APP_ID,
 }
 
 firebase.initializeApp(firebaseConfig)
