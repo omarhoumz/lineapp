@@ -119,7 +119,7 @@ class Main extends Component {
         break
 
       case 'EDIT':
-        console.log(`${action} action not yet supported`)
+        console.log(`${action} action not yet supported`) // eslint-disable-line no-console
         break
 
       case 'DELETE_ALL':

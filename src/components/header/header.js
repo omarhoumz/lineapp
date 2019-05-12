@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import { About } from '../about/about'
 import './header.css'
 
 export default class Header extends Component {
+  static propTypes = {
+    displayName: PropTypes.string,
+    onClickSignOut: PropTypes.string,
+    imageUrl: PropTypes.string,
+  }
+
   render() {
     const { displayName, onClickSignOut, imageUrl } = this.props
 

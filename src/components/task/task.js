@@ -1,8 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import './task.css'
 
 export class Task extends Component {
+  static propTypes = {
+    task: PropTypes.shape({
+      key: PropTypes.string,
+      name: PropTypes.string,
+    }),
+    updateTask: PropTypes.func,
+    done: PropTypes.func,
+    edit: PropTypes.func,
+    delete: PropTypes.func,
+  }
   delete = () => {
     this.props.updateTask(this.props.task.key, 'DELETE')
   }

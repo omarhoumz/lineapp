@@ -13,11 +13,17 @@
     "react-firebaseui": "^3.1.2",
     "react-scripts": "3.0.1"
   },
+  "devDependencies": {
+    "prettier": "^1.17.0",
+    "eslint-config-prettier": "^4.2.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint './src/**/*.{js,jsx}'",
+    "lint:fix": "eslint './src/**/*.{js,jsx}' --fix"
   },
   "browserslist": [
     ">0.2%",

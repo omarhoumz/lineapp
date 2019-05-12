@@ -3,19 +3,19 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERS_ID,
-  appId: process.env.REACT_APP_APP_ID,
+  apiKey: process.env.REACT_APP_API_KEY, // eslint-disable-line no-undef
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN, // eslint-disable-line no-undef
+  databaseURL: process.env.REACT_APP_DATABASE_URL, // eslint-disable-line no-undef
+  projectId: process.env.REACT_APP_PROJECT_ID, // eslint-disable-line no-undef
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET, // eslint-disable-line no-undef
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERS_ID, // eslint-disable-line no-undef
+  appId: process.env.REACT_APP_APP_ID, // eslint-disable-line no-undef
 }
 
 firebase.initializeApp(firebaseConfig)
 
 const signInSuccessUrl =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === 'production' // eslint-disable-line no-undef
     ? 'https://lineapp.netlify.com/'
     : 'localhost:3000'
 
