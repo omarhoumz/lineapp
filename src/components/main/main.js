@@ -148,6 +148,9 @@ class Main extends Component {
   render() {
     const { task, allTasks } = this.state
 
+    const doneTasks = allTasks.filter(task => task.done)
+    const undoneTasks = allTasks.filter(task => !task.done)
+
     return (
       <main className="main-content">
         <div className="container">
@@ -209,32 +212,38 @@ class Main extends Component {
               </h4>
               <hr />
               <div className="task-container my-tasks-container">
-                {allTasks &&
-                  allTasks.map(
-                    task =>
-                      !task.done && (
-                        <Task
-                          task={task}
-                          key={task.key}
-                          updateTask={this.updateTask}
-                        />
-                      )
-                  )}
+                {undoneTasks.length === 0 ? (
+                  <>
+                    <div>No tasks</div>
+                    <br />
+                  </>
+                ) : (
+                  undoneTasks.map(task => (
+                    <Task
+                      task={task}
+                      key={task.key}
+                      updateTask={this.updateTask}
+                    />
+                  ))
+                )}
               </div>
               <h5>Done tasks</h5>
               <hr />
               <div className="task-container tasks-done-container">
-                {allTasks &&
-                  allTasks.map(
-                    task =>
-                      task.done && (
-                        <TaskDone
-                          task={task}
-                          key={task.key}
-                          updateTask={this.updateTask}
-                        />
-                      )
-                  )}
+                {doneTasks.length === 0 ? (
+                  <>
+                    <div>No done tasks</div>
+                    <br />
+                  </>
+                ) : (
+                  doneTasks.map(task => (
+                    <TaskDone
+                      task={task}
+                      key={task.key}
+                      updateTask={this.updateTask}
+                    />
+                  ))
+                )}
               </div>
             </div>
           </div>
