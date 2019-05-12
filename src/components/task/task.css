@@ -18,6 +18,8 @@
 .task .actions .material-icons {
   color: #6b7273;
   font-size: 1.3rem;
+
+  user-select: none;
 }
 .task i.material-icons:not(:last-child) {
   margin-right: 0.2rem;
