@@ -38,15 +38,6 @@ class Main extends Component {
     this.updateTask(null, 'DONE_ALL')
   }
 
-  prevTask = task => {
-    this.setState({ task })
-  }
-
-  handlePrev = e => {
-    const task = e.target.value
-    this.prevTask(task)
-  }
-
   handleAddTask = taskName => {
     if (taskName) {
       const task = {
@@ -65,12 +56,19 @@ class Main extends Component {
         }
       )
     }
+    return null
   }
 
   handleEnter = e => {
     if (e.key === 'Enter') {
       this.handleAddTask(e.target.value)
     }
+  }
+
+  handleTaskChange = e => {
+    this.setState({
+      task: e.target.value,
+    })
   }
 
   updateTask = (key, action) => {
@@ -172,7 +170,7 @@ class Main extends Component {
                   title="task"
                   placeholder="Add a new Task"
                   value={task}
-                  onChange={this.handlePrev}
+                  onChange={this.handleTaskChange}
                   onKeyPress={this.handleEnter}
                   className="form-control"
                 />
@@ -180,7 +178,7 @@ class Main extends Component {
               <div className="form-group">
                 <button
                   className="btn btn-info d-inline-flex"
-                  onClick={this.handleAddTask}
+                  onClick={e => this.handleAddTask(e.target.value)}
                 >
                   <i className="material-icons mr-2">add</i> Add Task
                 </button>
@@ -221,7 +219,7 @@ class Main extends Component {
                   undoneTasks.map(task => (
                     <Task
                       task={task}
-                      key={task.key}
+                      key={JSON.stringify(task)}
                       updateTask={this.updateTask}
                     />
                   ))
@@ -239,7 +237,7 @@ class Main extends Component {
                   doneTasks.map(task => (
                     <TaskDone
                       task={task}
-                      key={task.key}
+                      key={JSON.stringify(task)}
                       updateTask={this.updateTask}
                     />
                   ))

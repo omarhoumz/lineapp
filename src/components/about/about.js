@@ -28,8 +28,8 @@ export const About = () => {
           <div className="modal-body">
             <p>This is an awsome app.</p>
             <p>
-              Though it&apos;s not ready to be used yet, not even an emalpha
-              version.
+              Though it&apos;s not <strong>ready</strong> to be used yet, not
+              even an alpha version.
             </p>
           </div>
         </div>
