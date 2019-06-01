@@ -40,7 +40,7 @@ class Main extends Component {
   handleAddTask = taskName => {
     if (taskName) {
       const task = {
-        key: new Date(),
+        key: new Date().toString(),
         name: taskName,
         done: false,
       }
@@ -116,7 +116,7 @@ class Main extends Component {
         break
 
       case 'EDIT':
-        console.log(`${action} action not yet supported`) // eslint-disable-line no-console
+        console.info(`The ${action} action not yet supported`) // eslint-disable-line no-console
         break
 
       case 'DELETE_ALL':
