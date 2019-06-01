@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { uniqueId } from 'lodash';
 import Cookies from 'universal-cookie'
 
 import { Task } from '../task/task'
