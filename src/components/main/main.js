@@ -8,6 +8,15 @@ import './main.css'
 const tasksCookie = new Cookies()
 const cookieKey = 'allTasks'
 
+const TASK_ACTION = {
+  DONE: 'DONE',
+  UNDO: 'UNDO',
+  EDIT: 'EDIT',
+  DELETE: 'DELETE',
+  DONE_ALL: 'DONE_ALL',
+  DELETE_ALL: 'DELETE_ALL',
+}
+
 class Main extends Component {
   constructor(props) {
     super(props)
@@ -28,11 +37,11 @@ class Main extends Component {
   }
 
   onClickDoneAll = () => {
-    this.updateTask(null, 'DONE_ALL')
+    this.updateTask(null, TASK_ACTION.DONE_ALL)
   }
 
   onClickDeleteAll = () => {
-    this.updateTask(null, 'DELETE_ALL')
+    this.updateTask(null, TASK_ACTION.DELETE_ALL)
   }
 
   handleAddTask = taskName => {
@@ -70,7 +79,7 @@ class Main extends Component {
 
   updateTask = (key, action) => {
     switch (action) {
-      case 'DELETE':
+      case TASK_ACTION.DELETE:
         this.setState(
           prevState => ({
             allTasks: prevState.allTasks.filter(task => task.key !== key),
@@ -81,7 +90,7 @@ class Main extends Component {
         )
         break
 
-      case 'DONE':
+      case TASK_ACTION.DONE:
         this.setState(
           prevState => ({
             allTasks: prevState.allTasks.map(task => {
@@ -97,7 +106,7 @@ class Main extends Component {
         )
         break
 
-      case 'UNDO':
+      case TASK_ACTION.UNDO:
         this.setState(
           prevState => ({
             allTasks: prevState.allTasks.map(task => {
@@ -113,17 +122,17 @@ class Main extends Component {
         )
         break
 
-      case 'EDIT':
+      case TASK_ACTION.EDIT:
         console.info(`The ${action} action not yet supported`) // eslint-disable-line no-console
         break
 
-      case 'DELETE_ALL':
+      case TASK_ACTION.DELETE_ALL:
         this.setState({ allTasks: [] }, () => {
           this.updateTasks([])
         })
         break
 
-      case 'DONE_ALL':
+      case TASK_ACTION.DONE_ALL:
         this.setState(
           prevState => ({
             allTasks: prevState.allTasks.map(task => ({ ...task, done: true })),
@@ -149,6 +158,8 @@ class Main extends Component {
           <div className="row">
             <div className="col-sm add-task">
               <AddTask onAddTask={this.handleAddTask} />
+              <br />
+              <br />
             </div>
             <div className="col-sm all-tasks">
               <AllTasks
