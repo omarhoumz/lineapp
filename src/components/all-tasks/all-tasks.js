@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Task } from '../task/task'
 import { TaskDone } from '../task-done/task-done'
 
-const AllTasks = ({ tasks, delete_all, done_all, updateTask }) => {
+const AllTasks = ({ tasks, onClickDoneAll, onClickDeleteAll, updateTask }) => {
   const doneTasks = tasks.filter(task => task.done)
   const undoneTasks = tasks.filter(task => !task.done)
 
@@ -17,7 +17,7 @@ const AllTasks = ({ tasks, delete_all, done_all, updateTask }) => {
           data-position="top"
           data-delay="20"
           data-tooltip="Delete All Tasks"
-          onClick={delete_all}
+          onClick={onClickDeleteAll}
         >
           delete_sweep
         </i>
@@ -26,7 +26,7 @@ const AllTasks = ({ tasks, delete_all, done_all, updateTask }) => {
           data-position="top"
           data-delay="20"
           data-tooltip="All Tasks Done"
-          onClick={done_all}
+          onClick={onClickDoneAll}
         >
           done_all
         </i>
@@ -72,8 +72,8 @@ const AllTasks = ({ tasks, delete_all, done_all, updateTask }) => {
 
 AllTasks.propTypes = {
   tasks: PropTypes.array,
-  delete_all: PropTypes.func,
-  done_all: PropTypes.func,
+  onClickDeleteAll: PropTypes.func,
+  onClickDoneAll: PropTypes.func,
   updateTask: PropTypes.func,
 }
 
