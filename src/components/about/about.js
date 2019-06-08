@@ -30,8 +30,14 @@ export const About = () => {
           <div className="modal-body">
             <p>This is an awsome app.</p>
             <p>
-              Though it&apos;s not <strong>ready</strong> to be used yet, not
-              even an alpha version.
+              Though, it is not <strong>ready</strong> to be used yet, not even
+              an alpha version.
+            </p>
+            <h4 className="h6">Usage</h4>
+            <p>
+              This app uses <em>temporary storage</em>. Hard reloading your
+              browser will result in losing you data. And you cannot access your
+              data from another browser.
             </p>
           </div>
         </div>
