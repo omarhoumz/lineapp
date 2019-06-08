@@ -1,67 +1,55 @@
 import React from 'react'
 
-import { firebase } from './apis/firebase'
-
 import Login from './components/login/login'
 import Footer from './components/footer/footer'
 import Header from './components/header/header'
 import Main from './components/main/main'
 import { Loading } from './components/loading/loading'
+import authContext from './components/auth-context/auth-context'
 import './line-app.css'
 
-class LineApp extends React.Component {
-  constructor() {
-    super()
+const LineApp = () => {
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false)
 
-    this.state = {
-      isUserLoggedIn: false,
-      isLoading: true,
-    }
-  }
+  const firebaseAuth = React.useContext(authContext)
 
-  componentDidMount() {
-    this.unregisterAuthObserver = firebase
-      .auth()
-      .onAuthStateChanged(user =>
-        this.setState({ isUserLoggedIn: !!user, isLoading: false })
-      )
-  }
+  React.useEffect(() => {
+    const unregisterAuthObserver = firebaseAuth.onAuthStateChanged(user => {
+      setIsLoading(false)
+      setIsUserLoggedIn(!!user)
+    })
+    return () => unregisterAuthObserver()
+  })
 
-  componentWillUnmount() {
-    this.unregisterAuthObserver()
-  }
+  const currentUser = firebaseAuth.currentUser
 
-  renderLoginWidget = () => {
+  function renderLoginWidget() {
     return <Login />
   }
 
-  renderLoding = () => {
+  function renderLoding() {
     return <Loading />
   }
 
-  render() {
-    const { isUserLoggedIn, isLoading } = this.state
-    const firebaseAuth = firebase.auth()
-    const currentUser = firebaseAuth.currentUser
-
-    if (isLoading) {
-      return this.renderLoding()
-    }
-    if (!isUserLoggedIn) {
-      return this.renderLoginWidget()
-    }
-    return (
-      <div className="LineApp">
-        <Header
-          displayName={currentUser.displayName}
-          imageUrl={currentUser.photoURL}
-          onClickSignOut={() => firebaseAuth.signOut()}
-        />
-        <Main />
-        <Footer />
-      </div>
-    )
+  if (isLoading) {
+    return renderLoding()
   }
+  if (!isUserLoggedIn) {
+    return renderLoginWidget()
+  }
+
+  return (
+    <div className="LineApp">
+      <Header
+        displayName={currentUser.displayName}
+        imageUrl={currentUser.photoURL}
+        onClickSignOut={() => firebaseAuth.signOut()}
+      />
+      <Main />
+      <Footer />
+    </div>
+  )
 }
 
 export default LineApp
