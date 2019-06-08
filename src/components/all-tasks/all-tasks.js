@@ -13,19 +13,13 @@ const AllTasks = ({ tasks, onClickDoneAll, onClickDeleteAll, updateTask }) => {
       <h4>
         My tasks
         <i
-          className="material-icons right small act-btn tooltipped"
-          data-position="top"
-          data-delay="20"
-          data-tooltip="Delete All Tasks"
+          className="material-icons right small act-btn"
           onClick={onClickDeleteAll}
         >
           delete_sweep
         </i>
         <i
-          className="material-icons right small act-btn tooltipped"
-          data-position="top"
-          data-delay="20"
-          data-tooltip="All Tasks Done"
+          className="material-icons right small act-btn"
           onClick={onClickDoneAll}
         >
           done_all

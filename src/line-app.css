@@ -10,6 +10,7 @@ body,
 }
 .act-btn {
   cursor: pointer;
+  user-select: none;
 }
 
 footer p {
