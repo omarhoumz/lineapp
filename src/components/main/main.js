@@ -161,6 +161,8 @@ class Main extends Component {
               <br />
               <br />
             </div>
+          </div>
+          <div className="row">
             <div className="col-sm all-tasks">
               <AllTasks
                 tasks={allTasks}
