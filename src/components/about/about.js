@@ -36,9 +36,9 @@ export const About = () => {
             <h4 className="h6">Usage</h4>
             <p>
               This app uses <em>temporary storage</em>. Hard reloading your
-              browser will result in losing you data. And you cannot access your
-              data from another browser.
+              browser will result in losing you data.
             </p>
+            <p>Also, you cannot access your data from another browser.</p>
           </div>
         </div>
       </div>
