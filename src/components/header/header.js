@@ -2,9 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { About } from '../about/about'
+import authContext from '../auth-context/auth-context'
 import './header.css'
 
-const Header = ({ displayName, onClickSignOut, imageUrl }) => {
+const Header = () => {
+  const {
+    currentUser: { displayName, photoURL: imageUrl },
+    signOut,
+  } = React.useContext(authContext)
+
+  function onClickSignOut() {
+    signOut()
+  }
+
   return (
     <header className="page-header border-bottom border-light">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">

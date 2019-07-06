@@ -22,8 +22,6 @@ const LineApp = () => {
     return () => unregisterAuthObserver()
   })
 
-  const currentUser = firebaseAuth.currentUser
-
   function renderLoginWidget() {
     return <Login />
   }
@@ -41,11 +39,7 @@ const LineApp = () => {
 
   return (
     <div className="LineApp">
-      <Header
-        displayName={currentUser.displayName}
-        imageUrl={currentUser.photoURL}
-        onClickSignOut={() => firebaseAuth.signOut()}
-      />
+      <Header />
       <Main />
       <Footer />
     </div>
