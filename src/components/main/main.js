@@ -156,7 +156,7 @@ class Main extends Component {
       <main className="main-content">
         <div className="container">
           <div className="row">
-            <div className="col-sm add-task">
+            <div className="col-sm-6 offset-md-3 add-task">
               <AddTask onAddTask={this.handleAddTask} />
               <br />
               <br />
