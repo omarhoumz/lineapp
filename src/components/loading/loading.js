@@ -2,7 +2,7 @@ import React from 'react'
 
 import './loading.css'
 
-export const Loading = () => {
+const Loading = () => {
   return (
     <div className="loading">
       <div className="spinner-border text-secondary" role="status">
@@ -11,3 +11,5 @@ export const Loading = () => {
     </div>
   )
 }
+
+export default Loading

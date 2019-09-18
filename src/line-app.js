@@ -1,10 +1,10 @@
 import React from 'react'
 
 import Login from './components/login/login'
-import Footer from './components/footer/footer'
+import Footer from './sections/footer/footer'
 import Header from './components/header/header'
 import Main from './components/main/main'
-import { Loading } from './components/loading/loading'
+import Loading from './components/loading/loading'
 import authContext from './components/auth-context/auth-context'
 import './line-app.css'
 
@@ -22,7 +22,7 @@ const LineApp = () => {
     return () => unregisterAuthObserver()
   })
 
-  function renderLoginWidget() {
+  function renderLogin() {
     return <Login />
   }
 
@@ -34,7 +34,7 @@ const LineApp = () => {
     return renderLoding()
   }
   if (!isUserLoggedIn) {
-    return renderLoginWidget()
+    return renderLogin()
   }
 
   return (
