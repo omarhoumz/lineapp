@@ -2,7 +2,7 @@ import React from 'react'
 
 import Login from './components/login/login'
 import Footer from './sections/footer/footer'
-import Header from './components/header/header'
+import Header from './sections/header/header'
 import Main from './components/main/main'
 import Loading from './components/loading/loading'
 import authContext from './components/auth-context/auth-context'

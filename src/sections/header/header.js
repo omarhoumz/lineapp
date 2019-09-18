@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { About } from '../about/about'
-import authContext from '../auth-context/auth-context'
+import { About } from '../../components/about/about'
+import authContext from '../../components/auth-context/auth-context'
 import './header.css'
 
 const Header = () => {
