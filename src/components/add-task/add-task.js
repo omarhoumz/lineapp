@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './add-task.css'
+
 const AddTask = ({ onAddTask }) => {
   const [task, setTask] = React.useState('')
 
@@ -14,7 +16,7 @@ const AddTask = ({ onAddTask }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="add-task">
       <label htmlFor="task" className="sr-only">
         Add a task
       </label>

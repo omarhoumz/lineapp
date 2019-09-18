@@ -154,12 +154,10 @@ class Main extends Component {
 
     return (
       <main className="main-content">
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-sm-6 offset-md-3 add-task">
+            <div className="col-sm-6 offset-md-3">
               <AddTask onAddTask={this.handleAddTask} />
-              <br />
-              <br />
             </div>
           </div>
           <div className="row">
