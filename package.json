@@ -9,7 +9,7 @@
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-firebaseui": "^4.1.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.23",
